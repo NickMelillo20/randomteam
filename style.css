@@ -28,6 +28,10 @@ body{
 }
 
 #secondpoke,
+#thirdpoke,
+#fourthpoke,
+#fifthpoke,
+#sixthpoke,
 #starterPokemon {
     position: absolute;
     top: 75%; /* Adjust the positioning as needed */
@@ -41,8 +45,12 @@ body{
   
   
 
-  #secondsprite,
-  #starterSprite {
+#secondsprite,
+#thirdsprite,
+#fourthsprite,
+#fifthsprite,
+#sixthsprite,
+#starterSprite {
     display: none;
     width: 200px;
     height: 200px;
