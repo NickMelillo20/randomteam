@@ -1,15 +1,16 @@
-html{
+html {
     box-sizing: border-box;
     height: 10%;
 }
 
 
-body{
+body {
     text-align: center;
-    background-color:  green;
+    background-color: green;
+    font-family: rubik;
 }
 
-.box{
+.box {
     font-size: 23px;
     text-align: center;
     align-items: center;
@@ -17,11 +18,13 @@ body{
     padding-left: 25px;
     padding-right: 25px;
     border: 2px solid gray;
-    margin: 3% 20px; 
+    margin: 3% 20px;
     font-size: 20px;
-    width: 250px; /* Set a fixed width for the button */
-    height: 250px; /* Set a fixed height for the button */
-   
+    width: 250px;
+    /* Set a fixed width for the button */
+    height: 250px;
+    /* Set a fixed height for the button */
+    
     overflow: hidden;
     position: relative;
 
@@ -34,16 +37,17 @@ body{
 #sixthpoke,
 #starterPokemon {
     position: absolute;
-    top: 75%; /* Adjust the positioning as needed */
+    top: 75%;
+    /* Adjust the positioning as needed */
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
     font-size: 25px;
     font-weight: bold;
-    
-  }
-  
-  
+
+}
+
+
 
 #secondsprite,
 #thirdsprite,
@@ -55,21 +59,23 @@ body{
     width: 200px;
     height: 200px;
     position: absolute;
-    top: 30%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-  }
-  
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #pokemonContainer {
     display: inline-block;
     align-items: center;
-    
+
 }
 
-.box:hover:hover{
+.box:hover:hover {
     background-color: red;
 }
-.box:active:active{
+
+.box:active:active {
     background-color: blue;
-    
+
 }
+
