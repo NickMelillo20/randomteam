@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let previousNumbers = [];
 
   const fetchPokemon = () => {
-    const promises = [];
-    for (let i = 495; i <= 646; i++) {
-      const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-      promises.push(fetch(url).then((res) => res.json()))
-    }
+   
+   
+      const url = `https://pokeapi.co/api/v2/pokemon/2/`;
+      return fetch(url).then((res) => res.json());
+    
     Promise.all(promises).then((results) => {
       const pokemon = results.map((data) => ({
         name: data.name,

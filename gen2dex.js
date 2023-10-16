@@ -3,28 +3,37 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(pokedex);
 
     const fetchPokemon = () => {
-      const promises = [];
-      for (let i = 152; i <= 250; i++) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url).then((res) => res.json()))
-      }
-      Promise.all(promises).then((results) => {
-        const pokemon = results.map((data) => ({
-          name: data.name,
-          id: data.id,
-          sprite: data.sprites["front_default"],
-          hp: data.stats[0].base_stat,
-          Attack: data.stats[1].base_stat,
-          Defense: data.stats[2].base_stat,
-          SpAtk: data.stats[3].base_stat,
-          SpDef: data.stats[4].base_stat,
-          Speed: data.stats[5].base_stat,
-          type: data.types.map((type) => type.type.name).join(', ')
-        }));
-        displayPokemon(pokemon);
-      });
+      const url = `https://pokeapi.co/api/v2/generation/2/`;
+    
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          const pokemon = data.pokemon_species.map((species) => ({
+            name: species.name,
+            id: species.url.split('/')[6], // Extracting the ID from the URL
+          }));
+          return Promise.all(
+            pokemon.map((poke) => fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}/`))
+          );
+        })
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((pokemonData) => {
+          const formattedPokemonData = pokemonData.map((data) => ({
+            name: data.name,
+            id: data.id,
+            sprite: data.sprites.front_default,
+            hp: data.stats[0].base_stat,
+            Attack: data.stats[1].base_stat,
+            Defense: data.stats[2].base_stat,
+            SpAtk: data.stats[3].base_stat,
+            SpDef: data.stats[4].base_stat,
+            Speed: data.stats[5].base_stat,
+            type: data.types.map((type) => type.type.name).join(', '),
+          }));
+          displayPokemon(formattedPokemonData);
+        });
     };
-  
+    
     const displayPokemon = (pokemon) => {
   
      console.log(pokemon);
