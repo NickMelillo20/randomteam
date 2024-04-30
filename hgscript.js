@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   start.addEventListener("click", () => {
 
     // STORES NUMBERS
-    const numbers = [155, 158, 152];
-
+   
+    const numbers = [4, 155, 255, 390, 498, 653, 725, 813, 909];
     const availableNumbers = numbers.filter((num) => num !== previousNumbers);
 
     if (availableNumbers.length === 0) {
@@ -89,147 +89,179 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   secondbox.addEventListener("click", () => {
 
-    // VARIALBE FOR RANDOMIZATION
-    const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
+   // STORES NUMBERS
+   const numbers = [7, 158, 258, 393, 501, 656, 728, 816, 912];
 
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const randomPokemon = {
-          name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-          id: data.id,
-          sprite: data.sprites["front_default"],
-        };
+   const availableNumbers = numbers.filter((num) => num !== previousNumbers);
 
-        pokedex.style.display = "block";
+   if (availableNumbers.length === 0) {
+     previousNumbers = [];
+     previousPokemonId = null; // Reset previousPokemonId
 
-        // TO DISPLAY POKEMON IN BOX
-        const secondpoke = document.getElementById("secondpoke");
-        secondpoke.textContent = ` ${randomPokemon.name}`;
+   }
+   // VARIALBE FOR RANDOMIZATION
+   const randomIndex = Math.floor(Math.random() * availableNumbers.length)
+   // GENERATORES THE RANDOM POKEMON BAED ON ID
+   const randomPokemonId = availableNumbers[randomIndex];
 
-        const secondsprite = document.getElementById("secondsprite");
-        secondsprite.src = randomPokemon.sprite;
-        secondsprite.alt = randomPokemon.name;
+   fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
+     .then((res) => res.json())
+     .then((data) => {
+       const randomPokemon = {
+         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+         id: data.id,
+         sprite: data.sprites["front_default"],
+       };
 
-        secondpoke.style.display = "inline";
-        secondsprite.style.display = "inline";
-      });
-  });
+       pokedex.style.display = "block";
+
+       // TO DISPLAY POKEMON IN BOX
+       const secondpoke = document.getElementById("secondpoke");
+       secondpoke.textContent = ` ${randomPokemon.name}`;
+
+       const secondsprite = document.getElementById("secondsprite");
+       secondsprite.src = randomPokemon.sprite;
+       secondsprite.alt = randomPokemon.name;
+
+       secondpoke.style.display = "inline";
+       secondsprite.style.display = "inline";
+
+
+       previousNumbers = randomPokemonId;
+     });
+
+ });
 
   thirdbox.addEventListener("click", () => {
 
-    // VARIALBE FOR RANDOMIZATION
-    const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
+   // STORES NUMBERS
+   const numbers = [1, 152, 252, 387, 495, 650, 722, 810, 906];
 
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const randomPokemon = {
-          name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-          id: data.id,
-          sprite: data.sprites["front_default"],
-        };
+   const availableNumbers = numbers.filter((num) => num !== previousNumbers);
 
-        pokedex.style.display = "block";
+   if (availableNumbers.length === 0) {
+     previousNumbers = [];
+     previousPokemonId = null; // Reset previousPokemonId
 
-        // TO DISPLAY POKEMON IN BOX
-        const thirdpoke = document.getElementById("thirdpoke");
-        thirdpoke.textContent = ` ${randomPokemon.name}`;
+   }
+   // VARIALBE FOR RANDOMIZATION
+   const randomIndex = Math.floor(Math.random() * availableNumbers.length)
+   // GENERATORES THE RANDOM POKEMON BAED ON ID
+   const randomPokemonId = availableNumbers[randomIndex];
 
-        const secondsprite = document.getElementById("secondsprite");
-        thirdsprite.src = randomPokemon.sprite;
-        thirdsprite.alt = randomPokemon.name;
+   fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
+     .then((res) => res.json())
+     .then((data) => {
+       const randomPokemon = {
+         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+         id: data.id,
+         sprite: data.sprites["front_default"],
+       };
 
-        thirdpoke.style.display = "inline";
-        thirdsprite.style.display = "inline";
-      });
-  });
+       pokedex.style.display = "block";
 
-  fourthbox.addEventListener("click", () => {
+       // TO DISPLAY POKEMON IN BOX
+       const thirdpoke = document.getElementById("thirdpoke");
+       thirdpoke.textContent = ` ${randomPokemon.name}`;
 
-    // VARIALBE FOR RANDOMIZATION
-    const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
+       const thirdsprite = document.getElementById("thirdsprite");
+       thirdsprite.src = randomPokemon.sprite;
+       thirdsprite.alt = randomPokemon.name;
 
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const randomPokemon = {
-          name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-          id: data.id,
-          sprite: data.sprites["front_default"],
-        };
+       thirdpoke.style.display = "inline";
+       thirdsprite.style.display = "inline";
 
-        pokedex.style.display = "block";
 
-        // TO DISPLAY POKEMON IN BOX
-        const fourthpoke = document.getElementById("fourthpoke");
-        fourthpoke.textContent = ` ${randomPokemon.name}`;
+       previousNumbers = randomPokemonId;
+     });
 
-        const fourthsprite = document.getElementById("fourthsprite");
-        fourthsprite.src = randomPokemon.sprite;
-        fourthsprite.alt = randomPokemon.name;
+ });
 
-        fourthpoke.style.display = "inline";
-        fourthsprite.style.display = "inline";
-      });
-  });
+  // fourthbox.addEventListener("click", () => {
 
-  fifthbox.addEventListener("click", () => {
+  //   // VARIALBE FOR RANDOMIZATION
+  //   const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
 
-    // VARIALBE FOR RANDOMIZATION
-    const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
+  //   fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const randomPokemon = {
+  //         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+  //         id: data.id,
+  //         sprite: data.sprites["front_default"],
+  //       };
 
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const randomPokemon = {
-          name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-          id: data.id,
-          sprite: data.sprites["front_default"],
-        };
+  //       pokedex.style.display = "block";
 
-        pokedex.style.display = "block";
+  //       // TO DISPLAY POKEMON IN BOX
+  //       const fourthpoke = document.getElementById("fourthpoke");
+  //       fourthpoke.textContent = ` ${randomPokemon.name}`;
 
-        // TO DISPLAY POKEMON IN BOX
-        const fifthpoke = document.getElementById("fifthpoke");
-        fifthpoke.textContent = ` ${randomPokemon.name}`;
+  //       const fourthsprite = document.getElementById("fourthsprite");
+  //       fourthsprite.src = randomPokemon.sprite;
+  //       fourthsprite.alt = randomPokemon.name;
 
-        const fifthsprite = document.getElementById("fifthsprite");
-        fifthsprite.src = randomPokemon.sprite;
-        fifthsprite.alt = randomPokemon.name;
+  //       fourthpoke.style.display = "inline";
+  //       fourthsprite.style.display = "inline";
+  //     });
+  // });
 
-        fifthpoke.style.display = "inline";
-        fifthsprite.style.display = "inline";
-      });
-  });
+  // fifthbox.addEventListener("click", () => {
 
-  sixthbox.addEventListener("click", () => {
+  //   // VARIALBE FOR RANDOMIZATION
+  //   const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
 
-    // VARIALBE FOR RANDOMIZATION
-    const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
-    fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const randomPokemon = {
-          name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
-          id: data.id,
-          sprite: data.sprites["front_default"],
-        };
+  //   fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const randomPokemon = {
+  //         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+  //         id: data.id,
+  //         sprite: data.sprites["front_default"],
+  //       };
 
-        pokedex.style.display = "block";
+  //       pokedex.style.display = "block";
 
-        // TO DISPLAY POKEMON IN BOX
-        const sixthpoke = document.getElementById("sixthpoke");
-        sixthpoke.textContent = ` ${randomPokemon.name}`;
+  //       // TO DISPLAY POKEMON IN BOX
+  //       const fifthpoke = document.getElementById("fifthpoke");
+  //       fifthpoke.textContent = ` ${randomPokemon.name}`;
 
-        const sixthsprite = document.getElementById("sixthsprite");
-        sixthsprite.src = randomPokemon.sprite;
-        sixthsprite.alt = randomPokemon.name;
+  //       const fifthsprite = document.getElementById("fifthsprite");
+  //       fifthsprite.src = randomPokemon.sprite;
+  //       fifthsprite.alt = randomPokemon.name;
 
-        sixthpoke.style.display = "inline";
-        sixthsprite.style.display = "inline";
-      });
-  });
+  //       fifthpoke.style.display = "inline";
+  //       fifthsprite.style.display = "inline";
+  //     });
+  // });
+
+  // sixthbox.addEventListener("click", () => {
+
+  //   // VARIALBE FOR RANDOMIZATION
+  //   const randomIndex = Math.floor(Math.random() * (248 - 201 + 1) + 201);
+  //   fetch(`https://pokeapi.co/api/v2/pokemon/${randomIndex}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const randomPokemon = {
+  //         name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
+  //         id: data.id,
+  //         sprite: data.sprites["front_default"],
+  //       };
+
+  //       pokedex.style.display = "block";
+
+  //       // TO DISPLAY POKEMON IN BOX
+  //       const sixthpoke = document.getElementById("sixthpoke");
+  //       sixthpoke.textContent = ` ${randomPokemon.name}`;
+
+  //       const sixthsprite = document.getElementById("sixthsprite");
+  //       sixthsprite.src = randomPokemon.sprite;
+  //       sixthsprite.alt = randomPokemon.name;
+
+  //       sixthpoke.style.display = "inline";
+  //       sixthsprite.style.display = "inline";
+  //     });
+  // });
 
 
 
